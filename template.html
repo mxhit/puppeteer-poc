@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 515px;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <style>
+        .flex {
+            display: flex;
+        }
+
+        .horizontal-center {
+            justify-content: center;
+        }
+
+        .vertical-center {
+            align-items: center;
+        }
+
+        .mx-5 {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .my-5 {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .default-margin {
+            margin: 10px;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        span {
+            text-transform: uppercase;
+        }
+
+        table,
+        th {
+            outline: solid 1px black;
+            width: 50px;
+            height: 40px;
+            empty-cells: show;
+            column-width: 60px;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        td {
+            outline: solid 1px black;
+            width: 50px;
+            height: 300px;
+        }
+
+        .date {
+            padding-left: 81px;
+        }
+
+        .b-no {
+            padding-left: 70px;
+        }
+
+        .pieces {
+            padding-left: 57px;
+        }
+
+        .metres {
+            padding-left: 100px;
+        }
+
+        .remarks {
+            padding-left: 165px;
+        }
+    </style>
+</head>
+
+<body style="width: 500px; margin: 0px;">
+    <!-- Main container -->
+    <div id="container" style="width: 500px;">
+        <!-- Header section containing company info -->
+        <section id="company" style="width: 500px;">
+            <h2 class="flex horizontal-center vertical-center default-margin" style="text-transform: uppercase;">
+                {FULLNAME}</h2>
+            <address class="flex horizontal-center vertical-center" style="margin-bottom: 5px;">{ADDRESS}
+            </address>
+            <div id="contact" class="flex horizontal-center vertical-center">
+                <a href="tel:+91{MOBILE}">+91{MOBILE}</a>
+            </div>
+            <div id="header" class="flex justify-content-between">
+                <p class="mx-5"><strong>Sr. No.:</strong>&nbsp;{SNO}</p>
+                <p class="mx-5"><strong>Date:</strong>&nbsp;{DATE}</p>
+            </div>
+        </section>
+
+        <!-- Form section -->
+        <section id="form" style="width: 500px;">
+            <!-- Buyer section -->
+            <div id="buyer" class="mx-5">
+                <p class="my-5"><strong>Buyer's Name M/s.:</strong>&nbsp;<span>{BUYER-NAME}</span></p>
+                <p class="my-5"><strong>Buyer's Address:</strong>&nbsp;<em>{BUYER-ADDRESS}</em></p>
+                <p class="my-5"><strong>GSTIN:</strong>&nbsp;{GSTIN}</p>
+            </div>
+            <hr>
+            <!-- Seller section -->
+            <div id="seller" class="mx-5">
+                <p class="my-5"><strong>Seller's Name M/s.:</strong>&nbsp;<span>{SELLER-NAME}</span></p>
+                <p class="my-5"><strong>Seller's Address:</strong>&nbsp;<em>{SELLER-ADDRESS}</em></p>
+            </div>
+            <!-- Quality section -->
+            <div id="quality" class="mx-5">
+                <p class="my-5"><strong>Quality:</strong>&nbsp;<span>{QUALITY}</span></p>
+                <p class="my-5"><strong>Quantity:</strong>&nbsp;{QUANTITY}</p>
+                <p class="my-5"><strong>Rate:</strong>&nbsp;Rs. {RATE}&nbsp;<strong>+ GST</strong></p>
+                <p class="my-5"><strong>Delivery:</strong>&nbsp;{DELIVERY}</p>
+                <p class="my-5"><strong>Terms:</strong>&nbsp;<span>{TERMS}</span></p>
+                <p class="my-5"><strong>Dalali:</strong>&nbsp;<span>{DALALI}%</span></p>
+            </div>
+
+            <!-- Table section -->
+            <div id="table" class="mx-5">
+                <table class="">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Bill No.</th>
+                            <th>Pieces</th>
+                            <th>Metres</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="date"></td>
+                            <td class="b-no"></td>
+                            <td class="pieces"></td>
+                            <td class="metres"></td>
+                            <td class="remarks"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Orders {
+  id               Int      @id @default(autoincrement())
+  buyerName        String   @db.VarChar(100)
+  buyerAddress     String
+  gstin            String   @db.VarChar(30)
+  sellerName       String   @db.VarChar(100)
+  sellerAddress    String
+  orderDate        DateTime @default(now())
+  quality          String
+  quantity         String
+  rate             Decimal
+  deliverySchedule String
+  paymentTerms     String
+  brokerage        Decimal
+}

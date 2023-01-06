@@ -1,0 +1,18 @@
+{
+  "name": "puppeteer-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohit Dodhia",
+  "license": "ISC",
+  "devDependencies": {
+    "prisma": "^4.8.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.8.1",
+    "puppeteer": "^19.4.1"
+  }
+}
