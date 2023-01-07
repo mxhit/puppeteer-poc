@@ -34,12 +34,7 @@ async function saveOrder(data) {
 
 function populateTemplate(file, order) {
     let date = new Date(order.orderDate);
-
-    const DD = date.getDate().toString().padStart(2, '0');
-    const MM = (date.getMonth() + 1).toString().padStart(2, '0');
-    const YYYY = date.getFullYear().toString();
-
-    const dateString = DD + '-' + MM + '-' + YYYY;
+    const dateString = getDateString(date);
 
     return file
         .replace('{FULLNAME}', FULLNAME)
@@ -60,14 +55,25 @@ function populateTemplate(file, order) {
         .replace('{DALALI}', order.brokerage);
 }
 
+function getDateString(date) {
+    const DD = date.getDate().toString().padStart(2, '0');
+    const MM = (date.getMonth() + 1).toString().padStart(2, '0');
+    const YYYY = date.getFullYear().toString();
+
+    return DD + '-' + MM + '-' + YYYY;
+}
+
 async function generateOrderForm(data) {
     // Save order in the database
     let order = await saveOrder(data);
 
+    // Fetch the template
     let template = fs.readFileSync('template.html', 'utf-8');
 
+    // Replace placeholders with the concerned values
     orderFile = populateTemplate(template, order);
 
+    // Write the file to a directory
     generateFile(orderFile, order.id, order.quality.replaceAll(' ', '-'), order.buyerName.replaceAll(' ', '-'), order.sellerName.replaceAll(' ', '-'));
 }
 
@@ -78,7 +84,7 @@ async function generateFile(orderFile, orderId, quality, buyerName, sellerName) 
 
     const pdf = await page.pdf({
         path: `storage/${orderId}_${quality}_${buyerName}_${sellerName}.pdf`,
-        margin: { top: '100px', right: '150px', bottom: '100px', left: '150px' },
+        margin: { top: '25px', right: '150px', bottom: '25px', left: '150px' },
         printBackground: true,
         format: 'A4',
     });
